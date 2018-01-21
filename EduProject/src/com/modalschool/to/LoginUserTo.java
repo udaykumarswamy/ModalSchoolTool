@@ -10,7 +10,7 @@ public class LoginUserTo {
 
 	private String userName;
 	private double userId;
-	private Date lastLogin;
+	private String lastLogin;
 	private String isAuthenticatedUser;
 	private int accessType;
 	
@@ -27,10 +27,10 @@ public class LoginUserTo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return lastLogin;
 	}
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	public String getIsAuthenticatedUser() {

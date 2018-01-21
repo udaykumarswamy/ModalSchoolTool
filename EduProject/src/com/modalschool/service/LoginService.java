@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.modalschool.daoimpl.LoginCommandManager;
 import com.modalschool.daoimpl.LoginQueryManager;
 import com.modalschool.response.ModalSchoolResponse;
 import com.modalschool.to.LoginUserTo;
@@ -27,6 +28,9 @@ public class LoginService {
 
 	@Autowired
 	private LoginQueryManager loginQueryManager;
+
+	@Autowired
+	private LoginCommandManager loginCommandManager;
 
 	/**
 	 * @param loginUserInfo
@@ -55,6 +59,7 @@ public class LoginService {
 					loginUserTo.setUserId(userInfo.getUserId());
 					loginUserTo.setIsAuthenticatedUser("true");
 				}
+				loginCommandManager.updateLastLogin(loginUserTo.getUserId());
 				modalSchoolResponse.setResponseObject(loginUserTo);
 			} else {
 				modalSchoolResponse.setMessage("user Authentication failed!!");
