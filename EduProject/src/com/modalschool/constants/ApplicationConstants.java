@@ -1,3 +1,4 @@
+
 package com.modalschool.constants;
 
 /**
@@ -10,3 +11,4 @@ public class ApplicationConstants {
 	public static final String updateLastLogin="update LoginUser m set m.lastLogin=:lastLogin where m.userId=:userId";
 
 }
+
