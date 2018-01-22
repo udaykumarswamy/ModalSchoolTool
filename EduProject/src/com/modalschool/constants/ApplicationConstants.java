@@ -4,6 +4,7 @@ package com.modalschool.constants;
 /**
  * @author udaykumar swamy
  *Following class will have all the constant values of the application this values cant be modified ever
+ *added some comment
  */
 public class ApplicationConstants {
 
