@@ -75,17 +75,15 @@ public class LoginDao extends SessinfactoryDao {
 	@Transactional
 	public void updateLastLogin(double userId) {
 		Session session = sessionFactory.openSession();
-		Transaction updateLoginTransaction = session.beginTransaction();
+		Transaction updateLoginTransaction=null;
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			Date currentLogin = new Date();
 			String lastLogin = dateFormat.format(currentLogin);
-
-			Query lastLoginUpdate = session
-					.createQuery(ApplicationConstants.updateLastLogin);
-			lastLoginUpdate.setParameter("userId", userId);
-			lastLoginUpdate.setParameter("lastLogin", lastLogin);
-			lastLoginUpdate.executeUpdate();
+			Object obj=session.load(LoginUser.class, new Double(userId));
+			LoginUser loginUser=(LoginUser)obj;
+			updateLoginTransaction= session.beginTransaction();
+			loginUser.setLastLogin(lastLogin);
 			updateLoginTransaction.commit();
 
 		} catch (Exception e) {
